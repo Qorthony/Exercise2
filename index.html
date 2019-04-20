@@ -6,43 +6,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kalkulator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('g1.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form action="">
-        <table>
-            <tr>
-                <td colspan="4"><input type="text" name="display" readonly></td>
-            </tr>
-            <tr>
-                <td><input id="1" type="button" value="1"></td>
-                <td><input id="2" type="button" value="2"></td>
-                <td><input id="3" type="button" value="3"></td>
-                <td><input id="tambah" type="button" value="+"></td>
-            </tr>
-            <tr>
-                <td><input id="4" type="button" value="4"></td>
-                <td><input id="5" type="button" value="5"></td>
-                <td><input id="6" type="button" value="6"></td>
-                <td><input id="kurangi" type="button" value="-"></td>
-            </tr>
-            <tr>
-                <td><input id="7" type="button" value="7"></td>
-                <td><input id="8" type="button" value="8"></td>
-                <td><input id="9" type="button" value="9"></td>
-                <td><input id="kali" type="button" value="*"></td>
-            </tr>
-            <tr>
-                    <td><input id="c" type="button" value="7"></td>
-                    <td><input id="8" type="button" value="8"></td>
-                    <td><input id="9" type="button" value="9"></td>
-                    <td><input id="kali" type="button" value="*"></td>
-                </tr>
-        </table>
+    <form>
+        <div class="container bg-dark text-center rounded-lg" style="max-width:640px;">
+            <div class="row pt-3">
+                <div class="col-12">
+                    <input type="text" id="display" class="bg-secondary text-white rounded border-0" style="width:90%;height:100px;text-align:right;font-size: 32px;" onkeypress="handle(event)">
+                </div>
+            </div>
+            <div class="row pt-5 pb-3">
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="1"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="2"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="3"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-warning border-warning text-white"
+                        style="font-size: 42px;" value="+" onclick="add(value)" style="font-size:32px;">
+                </div>
+            </div>
+            <div class="row pt-3 pb-3">
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="4"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="5"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="6"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-warning border-warning text-white"
+                        style="font-size: 42px;" value="-" onclick="add(value)" style="font-size:32px;">
+                </div>
+            </div>
+            <div class="row pt-3 pb-3">
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="7"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="8"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="9"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-warning border-warning text-white"
+                        style="font-size: 42px;" value="*" onclick="add(value)" style="font-size:32px;">
+                </div>
+            </div>
+            <div class="row pt-3 pb-5">
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill" style="font-size: 42px;" value="0"
+                        onclick="add(value)" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-danger border-danger text-white"
+                        style="font-size: 42px;" value="ac" onclick="reset()" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-info border-info"
+                        style="font-size: 42px;" value="=" onclick="hitung()" style="font-size:32px;">
+                </div>
+                <div class="col-3">
+                    <input type="button" class="pt-2 pb-2 pr-4 pl-4 rounded-pill bg-warning border-warning text-white"
+                        style="font-size: 42px;" value="/" onclick="add(value)" style="font-size:32px;">
+                </div>
+            </div>
+        </div>
     </form>
 
     <script>
+        
+        let display = document.getElementById('display');
+
+        function add(n) {
+            return display.value += n;
+        }
+
+        function hitung() {
+            return display.value=eval(display.value);
+        }
+
+        function reset() {
+            return display.value=""
+        }
+
+        function hapus() {
+            return display.value=display.value.substr(0, display.value.length - 1);
+        }
+        display.addEventListener('keypress',function(e) {
+            e.preventDefault();
+            if(e.keyCode===13){
+                hitung();
+            }
+            else if (e.keyCode===48||e.keyCode===49||e.keyCode===50||e.keyCode===51||e.keyCode===52||e.keyCode===53||e.keyCode===54||e.keyCode===55||e.keyCode===56||e.keyCode===57){
+                add(e.key);
+            }
+            else if(e.keyCode===42||e.keyCode===43||e.keyCode===45||e.keyCode===47){
+                add(e.key);
+            }
+        })
+
 
     </script>
 </body>
